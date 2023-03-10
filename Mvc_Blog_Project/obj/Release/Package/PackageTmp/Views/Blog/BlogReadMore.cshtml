@@ -1,0 +1,35 @@
+﻿@model IEnumerable<EntityLayer.Concrete.Blog>
+@foreach(var item in Model)
+{
+    <head>
+        <style>
+            p#paragraphs{
+                font-size:xx-large;
+                text-align:center;
+            }
+
+            p#paragraphs2 {
+                font-size: x-large;
+                
+            }
+
+        </style>
+    </head>
+<div class="post-content-body">
+    <p id="paragraphs"><strong>@item.BlogTitle</strong></p>
+    <p>&nbsp;&nbsp;&nbsp;&nbsp;@item.BlogContent</p>
+
+    <p id="paragraphs2"><strong>@item.BlogTitle2</strong></p>
+    <p>&nbsp;&nbsp;&nbsp;&nbsp;@item.BlogContent2</p>
+
+    <p id="paragraphs2"><strong>@item.BlogTitle3</strong></p>
+    <p>&nbsp;&nbsp;&nbsp;&nbsp;@item.BlogContent3</p>
+
+    <div class="row mb-5 mt-5">
+        <div class="col-md-12 mb-4">
+            <img src="@item.BlogImage2" alt="Image" class="img-fluid rounded">
+        </div>
+
+    </div>
+</div>
+}

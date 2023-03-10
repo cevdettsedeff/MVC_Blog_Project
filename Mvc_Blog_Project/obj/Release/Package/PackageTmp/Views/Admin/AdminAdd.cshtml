@@ -1,0 +1,64 @@
+﻿@model EntityLayer.Concrete.Admin
+
+
+@{
+    ViewBag.Title = "AdminAdd";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+
+<!DOCTYPE html>
+<html>
+<body class="hold-transition sidebar-mini">
+    <section class="content">
+
+        <div class="card">
+            <div class="card-header">
+
+                <h3 class="card-title"><strong>Admin Ekleme Sayfası</strong></h3>
+            </div>
+            <div class="card-body">
+                <form class="form-group" method="post">
+                    @Html.Label("Email")
+                    @Html.TextBoxFor(x => x.UserName, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(x => x.UserName)
+                    <br />
+                    <br />
+
+                    @Html.Label("Şifre")
+                    @Html.TextBoxFor(x => x.Password, new { @class = "form-control ", @type = "password" })
+                    @Html.ValidationMessageFor(x => x.Password)
+                    <br />
+                    <br />
+
+                    @if (User.IsInRole("A"))
+                    {
+
+                        @Html.Label("Rolü")
+                        @Html.TextBoxFor(x => x.AdminRole, new { @class = "form-control", @placeholder = "A yada B yazınız" })
+                        @Html.ValidationMessageFor(x => x.AdminRole)
+                        <br />
+                        <br />
+                    }
+
+                    @Html.Label("Ad Soyad")
+                    @Html.TextBoxFor(x => x.AdminName, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(x => x.AdminName)
+                    <br />
+                    <br />
+
+                    @Html.Label("Telefon")
+                    @Html.TextBoxFor(x => x.AdminPhoneNumber, new { @class = "form-control", @placeholder = "(xxx) xxx xxxx formatında giriniz..." })
+                    @Html.ValidationMessageFor(x => x.AdminPhoneNumber)
+                    <br />
+                    <br />
+
+                    <button class="btn btn-info">Kaydet</button>
+
+                </form>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

@@ -1,0 +1,182 @@
+﻿@model IEnumerable<EntityLayer.Concrete.Blog>
+
+@{
+    ViewBag.Title = "BlogList";
+    Layout = "~/Views/Shared/_AuthorLayout.cshtml";
+}
+
+@{ string color = ""; string state = ""; int point = 1; string background = "";}
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+
+
+
+
+        img#avatars {
+            border-radius: 50%;
+            height: 60px;
+            width: 60px;
+            object-fit: cover;
+        }
+    </style>
+</head>
+
+<body class="hold-transition sidebar-mini">
+    <!-- Author BlogList-->
+    <!-- Main content -->
+    <section class="content">
+
+        <!-- Default box -->
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title"><strong> Blog Listem</strong></h3>
+
+                <div class="card-tools">
+
+                </div>
+            </div>
+            <div class="card-body p-0">
+                <table class="table table-striped projects">
+                    <thead>
+                        <tr>
+                            <th  style="width: 1%">
+                                ID
+                            </th>
+                            <th style="width: 18%">
+                                Blog Başlığı
+                            </th>
+                            <th style="width: 10%">
+                                Yazar
+                            </th>
+                            <th style="width: 10%">
+                                Beğenilme Oranı
+                            </th>
+                            <th style="width: 6%" class="text-center">
+                                Durum
+                            </th>
+                            <th style="width: 6%" >
+                                Kategori
+                            </th>
+                            <th style="width: 20%" class="text-center">
+
+                            </th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+
+                            if (item.BlogRating == 5)
+                            {
+                                color = "post-category text-white bg-success mb-3";
+                                state = "Çok İyi";
+                                background = "green";
+
+                            }
+
+                            if (item.BlogRating == 4)
+                            {
+                                color = "post-category text-white bg-info mb-3";
+                                state = "İyi";
+                                background = "info";
+
+                            }
+
+                            if (item.BlogRating == 3)
+                            {
+                                color = "post-category text-white bg-warning mb-3";
+                                state = "Orta";
+                                background = "warning";
+                            }
+
+                            if (item.BlogRating == 2)
+                            {
+                                color = "post-category text-white bg-secondary mb-3";
+                                state = "Kötü";
+                                background = "secondary";
+                            }
+
+                            if (item.BlogRating == 1)
+                            {
+                                color = "post-category text-white bg-danger mb-3";
+                                state = "Çok Kötü";
+                                background = "danger";
+                            }
+
+                            if (item.BlogRating == 0)
+                            {
+                                color = "post-category text-white bg-primary mb-3";
+                                state = "Puanlanmamış";
+                                background = "green";
+                            }
+
+                            point = item.BlogRating * 20;
+
+                            <tr>
+                                <td>@item.BlogID</td>
+                                <td><a target="_blank" href="/Blog/BlogDetails/@item.BlogID">@item.BlogTitle</a></td>
+
+                                <td>
+                                    <ul class="list-inline">
+                                        <li class="list-inline-item">
+                                            <img alt="Avatar" id="avatars" class="table-avatar" src="@item.Author.AuthorImage">
+                                        </li>
+                                        <li>
+                                            <b>@item.Author.AuthorName</b>
+                                        </li>
+
+                                    </ul>
+                                </td>
+
+                                <td class="project_progress">
+                                    <div class="progress progress-sm">
+                                        <div class="progress-bar bg-@background" role="progressbar" aria-volumenow="@point" aria-volumemin="0" aria-volumemax="100" style="width: @point%">
+                                        </div>
+                                    </div>
+                                    <small>
+                                        Aldığı Puan: @item.BlogRating
+                                    </small>
+                                </td>
+
+                                <td class="project-state">
+                                    <span class="badge badge-@color">@state</span>
+                                </td>
+                                    @*<span class="badge badge-secondary"></span>*@
+                                <td>
+                                    <a target="_blank" href="/Blog/BlogByCategory/@item.CategoryID">@item.Category.CategoryName</a>
+                                </td>
+                               
+                                <td class="project-actions text-right">
+                                    <a class="btn btn-primary btn-sm" target="_blank" href="/Blog/BlogDetails/@item.BlogID">
+                                        <i class="fas fa-folder">
+                                        </i>
+                                        Sitede Gör
+                                    </a>
+                                    <a class="btn btn-info btn-sm" href="/User/UpdateBlog/@item.BlogID">
+                                        <i class="fas fa-pencil-alt">
+                                        </i>
+                                        Düzenle
+                                    </a>
+                                    <a class="btn btn-danger btn-sm" href="/User/DeleteBlog/@item.BlogID">
+                                        <i class="fas fa-trash">
+                                        </i>
+                                        Sil
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
+    </section>
+    <!-- Control Sidebar -->
+    <a href="/User/AddNewBlog/" class="btn btn-primary">Yeni Blog Ekle</a>
+
+</body>
+</html>

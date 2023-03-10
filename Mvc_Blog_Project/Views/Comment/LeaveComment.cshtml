@@ -1,0 +1,66 @@
+﻿@model EntityLayer.Concrete.Comment
+
+<!DOCTYPE html>
+<html>
+<head>
+ 
+
+    <link rel="stylesheet" type="text/css" href="~/Error Pages Designs/Star.css">
+
+</head>
+<body>
+    <div class="comment-form-wrap pt-5">
+        <h3 class="mb-5">Bir Yorum Yazın</h3>
+        <form method="post" class="p-5 bg-light">
+            <div class="form-group">
+                <label for="name">İsim *</label>
+                @Html.TextBoxFor(x => x.UserName, new { @class = "form-control" })
+                @Html.ValidationMessageFor(x => x.UserName)
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email *</label>
+                @Html.TextBoxFor(x => x.Mail, new { @class = "form-control" })
+                @Html.ValidationMessageFor(x => x.Mail)
+            </div>
+
+            <input type="hidden" name="CommentDate" value=" @DateTime.Now.ToShortDateString()">
+            <input type="hidden" name="BlogID" value="@ViewBag.id">
+
+
+            <div class="form-group">
+                <label for="message">Yorumunuz *</label>
+                @Html.TextAreaFor(x => x.CommentText, 10, 3, new { @class = "form-control" })
+                @Html.ValidationMessageFor(x => x.CommentText)
+            </div>
+
+            <div class="form-group">
+                <label style="margin-bottom:0px" for="message">Puanınız *</label>
+
+                <div class="stars" style="padding-top:0px; margin-top:0px;">
+
+                    <input type="radio" id="star1" name="BlogRating" value="1" />
+                    <input type="radio" id="star2" name="BlogRating" value="2" />
+                    <input type="radio" id="star3" name="BlogRating" value="3" />
+                    <input type="radio" id="star4" name="BlogRating" value="4" />
+                    <input type="radio" id="star5" name="BlogRating" value="5" />
+
+
+                    <label for="star1" aria-label="Banana">1 stars</label>
+                    <label for="star2">2 stars</label>
+                    <label for="star3">3 stars</label>
+                    <label for="star4">4 stars</label>
+                    <label for="star5">5 stars</label>
+
+
+                </div>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Gönder" id="gonder" class="btn btn-info btn-sm rounded px-4 py-2">
+            </div>
+
+        </form>
+    </div>
+</body>
+</html>

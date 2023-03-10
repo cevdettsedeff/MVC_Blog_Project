@@ -1,0 +1,86 @@
+﻿@model IEnumerable<EntityLayer.Concrete.About>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+<head>
+    <style>
+        .img-fluid#resim2 {
+            background: transparent;
+            padding: 5px;
+            border: 1px solid #ccc;
+            box-shadow: 2px 2px 2px #999;
+        }
+    </style>
+</head>
+
+<div class="site-cover site-cover-sm same-height overlay single-page" style="background-image: url('/Images/About_Us.jpg');">
+    <div class="container">
+        <div class="row same-height justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                <div class="post-entry text-center">
+                    <h1 class="">Hakkımızda</h1>
+                    <p class="lead mb-4 text-white"> Sizler için sayısız blog yazan yazarlarımızı ve ekibimizi daha yakından tanımak ister misiniz?</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="site-section bg-light">
+    <div class="container">
+        <div class="row">
+            @foreach (var item in Model)
+            {
+                <div class="col-md-6 order-md-2">
+                    <img src="~/Images/png_aboutus.png" alt="Image" style="height:400px;" class="img-fluid" id="resim">
+                </div>
+                <div class="col-md-5 mr-auto order-md-1">
+                    <h2>Biz Kimiz?</h2>
+
+                    <p>@item.AboutContent1</p>
+
+                    <ul class="ul-check list-unstyled success">
+                        <li>Her hafta en az 1 blog yazısı</li>
+                        <li>Tecrübeli yazar ekibi</li>
+                        <li>5'den fazla kategori</li>
+                        <li>Günlük 450 tekil okunma</li>
+                    </ul>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+@Html.Action("MeetTheTeam", "About")
+
+<div class="site-section bg-light">
+    <div class="container">
+        <div class="row">
+            @foreach (var item in Model)
+            {
+                <div class="col-md-6">
+                    <img src="/Images/AboutUs2.jpg" style="height:400px;" alt="Image" class="img-fluid" id="resim2">
+                </div>
+                <div class="col-md-5 ml-auto">
+                    <h2>Neler Yapıyoruz?</h2>
+
+                    <p class="mb-4">@item.AboutContent2</p>
+
+
+
+                    <ul class="ul-check list-unstyled success">
+                        <li>Film ve Dizi yorumları</li>
+                        <li>Bilinmedik turistik yerler</li>
+                        <li>Programlama hakkında yazılar</li>
+                        <li>Güncel konular hakkında yorumlar</li>
+                    </ul>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+@Html.Action("AddMail", "SubscribeMail")
+
+@Html.Action("Footer", "About")

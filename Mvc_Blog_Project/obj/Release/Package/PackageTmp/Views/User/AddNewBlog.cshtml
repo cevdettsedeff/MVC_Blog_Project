@@ -1,0 +1,78 @@
+﻿@model EntityLayer.Concrete.Blog
+
+
+@{
+    ViewBag.Title = "AddNewBlog";
+    Layout = "~/Views/Shared/_AuthorLayout.cshtml";
+}
+
+<form class="form-group" method="post">
+
+    @Html.Label("ID")
+    @Html.TextBoxFor(x => x.BlogID, new { @class = "form-control", @readonly = "readonly", @placeholder = "ID otomatik olarak oluşturulacaktır" })
+    <br />
+    <br />
+
+    @Html.Label("Blog Başlığı")
+    @Html.TextBoxFor(x => x.BlogTitle, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.BlogTitle)
+    <br />
+    <br />
+
+    @Html.Label("Kategori")
+    @Html.DropDownListFor(x => x.CategoryID, (List<SelectListItem>)ViewBag.values, new { @class = "form-control" })
+    <br />
+    <br />
+
+    @Html.Label("Kapak Fotoğrafı")
+    @Html.TextBoxFor(x => x.BlogImage, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.BlogImage)
+    <br />
+    <br />
+
+    @Html.Label("Tarih")
+    @Html.TextBoxFor(x => x.BlogDate, new { @class = "form-control", @placeholder = "gg.aa.YYYY şeklinde giriniz" })
+    @Html.ValidationMessageFor(x => x.BlogDate)
+    <br />
+    <br />
+
+    @Html.Label("Yazar")
+    @Html.DropDownListFor(x => x.AuthorID, (List<SelectListItem>)ViewBag.values2, new { @class = "form-control" })
+    <br />
+    <br />
+
+    @Html.Label("İçerik - 1.Paragraf")
+    @Html.TextAreaFor(x => x.BlogContent, 10, 20, new { @class = "form-control", @placeholder = "En az 200 karakter giriniz" })
+    @Html.ValidationMessageFor(x => x.BlogContent)
+    <br />
+    <br />
+
+    @Html.Label("2.Paragraf Başlığı")
+    @Html.TextBoxFor(x => x.BlogTitle2, new { @class = "form-control", @placeholder = "Boş bırakılabilir" })
+    <br />
+    <br />
+
+    @Html.Label("İçerik - 2.Paragraf")
+    @Html.TextAreaFor(x => x.BlogContent2, 10, 20, new { @class = "form-control", @placeholder = "Boş bırakılabilir" })
+    <br />
+    <br />
+
+    @Html.Label("3.Paragraf Başlığı")
+    @Html.TextBoxFor(x => x.BlogTitle3, new { @class = "form-control", @placeholder = "Boş bırakılabilir" })
+    <br />
+    <br />
+
+    @Html.Label("İçerik - 3.Paragraf")
+    @Html.TextAreaFor(x => x.BlogContent3, 10, 20, new { @class = "form-control", @placeholder = "Boş bırakılabilir" })
+    <br />
+    <br />
+
+    @Html.Label("İçerik Fotoğrafı")
+    @Html.TextBoxFor(x => x.BlogImage2, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.BlogImage2)
+    <br />
+    <br />
+
+    <button class="btn btn-info">Kaydet</button>
+
+</form>

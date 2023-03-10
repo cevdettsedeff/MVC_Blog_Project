@@ -1,0 +1,164 @@
+﻿@model IEnumerable<EntityLayer.Concrete.Blog>
+
+@{
+    ViewBag.Title = "AuthorBlogList";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+@{ string color = ""; string durum = "";}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+
+        img#avatars {
+            border-radius: 50%;
+            height: 90px;
+            width: 90px;
+            object-fit: cover;
+        }
+    </style>
+</head>
+<body class="hold-transition sidebar-mini">
+    <!-- Author BlogList-->
+    <!-- Main content -->
+    <section class="content">
+
+        <!-- Default box -->
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title"><strong> Blog Listem</strong></h3>
+
+                <div class="card-tools">
+                    <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
+                        <i class="fas fa-minus"></i>
+                    </button>
+                    <button type="button" class="btn btn-tool" data-card-widget="remove" data-toggle="tooltip" title="Remove">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="card-body p-0">
+                <table class="table table-striped projects">
+                    <thead>
+                        <tr>
+                            <th style="width: 1%">
+                                ID
+                            </th>
+                            <th style="width: 10%">
+                                Blog Başlığı
+                            </th>
+                            <th style="width: 3%">
+                                Yazar
+                            </th>
+                            <th style="width: 6%">
+                                Beğenilme Oranı
+                            </th>
+                            <th style="width: 2%" class="text-center">
+                                Durum
+                            </th>
+                            <th style="width: 2%" class="text-center">
+                                Kategori
+                            </th>
+                            <th style="width: 10%" class="text-center">
+
+                            </th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+
+                            if (item.BlogRating >= 85)
+                            {
+                                color = "post-category text-white bg-success mb-3";
+                                durum = "Çok İyi";
+
+                            }
+
+                            if (item.BlogRating <= 84 && item.BlogRating >= 70)
+                            {
+                                color = "post-category text-white bg-info mb-3";
+                                durum = "İyi";
+                            }
+
+                            if (item.BlogRating <= 69 && item.BlogRating >= 50)
+                            {
+                                color = "post-category text-white bg-warning mb-3";
+                                durum = "Orta";
+                            }
+
+                            if (item.BlogRating <= 49 && item.BlogRating >= 0)
+                            {
+                                color = "post-category text-white bg-danger mb-3";
+                                durum = "Kötü";
+                            }
+
+
+
+                            <tr>
+                                <td>@item.BlogID</td>
+                                <td><a target="_blank" href="/Blog/BlogDetails/@item.BlogID">@item.BlogTitle</a></td>
+
+                                <td>
+                                    <ul class="list-inline">
+                                        <li class="list-inline-item">
+                                            <img alt="Avatar" id="avatars" class="table-avatar" src="@item.Author.AuthorImage">
+
+                                        </li>
+                                        <li>
+                                            <b>@item.Author.AuthorName</b>
+                                        </li>
+
+                                    </ul>
+                                </td>
+                                <td class="project_progress">
+                                    <div class="progress progress-sm">
+                                        <div class="progress-bar bg-green" role="progressbar" aria-volumenow="@item.BlogRating" aria-volumemin="0" aria-volumemax="100" style="width: @item.BlogRating%">
+                                        </div>
+                                    </div>
+                                    <small>
+                                        Aldığı Puan: @item.BlogRating
+                                    </small>
+                                </td>
+                                <td class="project-state">
+                                    <span class="badge badge-@color">@durum</span>
+                                </td>
+                                <td class="project-state">
+                                    <span class="badge badge-secondary">@item.Category.CategoryName</span>
+                                </td>
+                                <td class="project-actions text-right">
+                                    <a class="btn btn-primary btn-sm" target="_blank" href="/Blog/BlogDetails/@item.BlogID">
+                                        <i class="fas fa-folder">
+                                        </i>
+                                        Sitede Gör
+                                    </a>
+                                    <a class="btn btn-info btn-sm" href="/User/UpdateBlog/@item.BlogID">
+                                        <i class="fas fa-pencil-alt">
+                                        </i>
+                                        Düzenle
+                                    </a>
+                                    <a class="btn btn-danger btn-sm" href="/User/DeleteBlog/@item.BlogID">
+                                        <i class="fas fa-trash">
+                                        </i>
+                                        Sil
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
+    </section>
+    <!-- Control Sidebar -->
+    <a href="/User/AddNewBlog/" class="btn btn-primary">Yeni Blog Ekle</a>
+
+</body>
+</html>
+
+

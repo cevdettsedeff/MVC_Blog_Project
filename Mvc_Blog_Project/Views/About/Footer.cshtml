@@ -1,0 +1,81 @@
+﻿@model IEnumerable<EntityLayer.Concrete.About>
+
+<head>
+    <style>
+        a#sayfa {
+            position: relative;
+        }
+
+            a#sayfa::before {
+                content: '';
+                position: absolute;
+                width: 100%;
+                height: 2px;
+                border-radius: 4px;
+                background-color: white;
+                bottom: 0;
+                left: 0;
+                transform-origin: right;
+                transform: scaleX(0);
+                transition: transform .2s ease-in-out;
+            }
+
+            a#sayfa:hover::before {
+                transform-origin: left;
+                transform: scaleX(1);
+            }
+     
+    </style>
+</head>
+<div class="site-footer"  style="background-color: #0097A7 " >
+    <div class="container">
+        <div class="row mb-5">
+            @foreach(var x in Model)
+            {
+            <div class="col-md-4">
+                <h3 style="color: white" class="footer-heading mb-4"><strong>Hakkımızda</strong></h3>
+                <p style="color: white" >@x.AboutContent1</p>
+            </div>
+            }
+            <div class="col-md-3 ml-auto">
+                <!-- <h3 class="footer-heading mb-4">Navigation</h3> -->
+                <ul class="list-unstyled float-left mr-5">
+                    <li><a id="sayfa" style="color: white" href="/Blog/Index">Anasayfa</a></li>
+                    <li><a id="sayfa" style="color: white" href="/Contact/SendMessage">İletişim</a></li>
+                    <li><a id="sayfa" style="color: white" href="/About/Index">Hakkımızda</a></li>
+                    <li><a id="sayfa" style="color: white" href="/Login/AuthorLogin/">Yazar Girişi</a></li>
+                    <li><a id="sayfa" style="color: white" href="/Login/AdminLogin/">Yönetici Girişi</a></li>
+                </ul>
+                <ul class="list-unstyled float-left">
+                    <li><a id="sayfa" style="color: white" href="/Blog/BlogByCategory/4">Seyahat</a></li>
+                    <li><a id="sayfa" style="color: white" href="/Blog/BlogByCategory/1">Yazılım</a></li>
+                    <li><a id="sayfa" style="color: white" href="/Blog/BlogByCategory/2">Teknoloji</a></li>
+                    <li><a id="sayfa" style="color: white" href="/Blog/BlogByCategory/3">Film & Dizi</a></li>
+                    <li><a id="sayfa" style="color: white" href="/Blog/BlogByCategory/5">Spor</a></li>
+                </ul>
+            </div>
+            <div class="col-md-4">
+
+
+                <div>
+                    <h3 style="color: white" class="footer-heading mb-4">Sosyal Medya Hesaplarım</h3>
+                    <p>
+                        <a  id="sayfa"  style="color: white" href="https://www.facebook.com/cevdet.sedef.77" target="_blank"><span class="icon-facebook pt-2 pr-2 pb-2 pl-0"></span></a>
+                        <a  id="sayfa" style="color: white" href="https://twitter.com/cevdettsedeff" target="_blank"><span class="icon-twitter p-2"></span></a>
+                        <a  id="sayfa" style="color: white" href="https://www.instagram.com/cevdettsedeff/" target="_blank"><span class="icon-instagram p-2"></span></a>
+                        <a  id="sayfa" style="color: white" href="https://github.com/cevdettsedeff" target="_blank"><span class="icon-github p-2"></span></a>
+                        <a  id="sayfa"  style="color: white" href="mailto: cevdettsedeff@gmail.com"><span class="icon-envelope p-2"></span></a>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 text-center">
+                <p style="color: white">
+                    Copyright &copy;
+                    <script>document.write(new Date().getFullYear());</script> Tüm hakları saklıdır | Bu projenin teması<i class="icon-heart text-danger" aria-hidden="true"></i><a  id="sayfa" style="color: white" href="https://colorlib.com" target="_blank"> Colorlib</a> tarafından yapılmıştır.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>

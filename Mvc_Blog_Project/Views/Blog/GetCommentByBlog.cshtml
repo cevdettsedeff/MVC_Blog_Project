@@ -1,0 +1,60 @@
+﻿@model IEnumerable<EntityLayer.Concrete.Comment>
+
+@{
+    ViewBag.Title = "GetCommentByBlog";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<!DOCTYPE html>
+<html>
+<body class="hold-transition sidebar-mini">
+    <!-- Site wrapper -->
+    <div class="wrapper">
+        <section class="content">
+            <div class="container-fluid">
+                <!-- Timelime example  -->
+                <div class="row">
+                    <div class="col-md-12">
+                        <!-- The time line -->
+                        <div class="timeline">
+                            @foreach(var item in Model)
+                            {
+
+                            <!-- timeline time label -->
+                            <div class="time-label">
+                                <span class="bg-gradient-info"> @(((DateTime)item.CommentDate).ToString("dd-MMM-yyyy"))</span>
+                            </div>
+                            <!-- /.timeline-label -->
+
+                            <!-- timeline item -->
+                            <div>
+                                <i class="fas fa-comment bg-primary"></i>
+                                <div class="timeline-item">
+                                    <h3 class="timeline-header"><strong>@item.UserName</strong> - @item.Mail</h3>
+                                    <div class="timeline-body">
+                                        @item.CommentText
+                                    </div>
+                                    <div class="timeline-footer">
+                                        <a href="/Blog/BlogDetails/@item.BlogID" class="btn btn-success btn-sm">Detaylar</a>
+                                        <a href="/Comment/StatusChangeToFalse/@item.CommentID" class="btn btn-danger btn-sm">Yorumu Kaldır</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- END timeline item -->
+                            }
+                        </div>
+                    </div>
+                    <!-- /.col -->
+                </div>
+            </div>
+            <!-- /.timeline -->
+        </section>
+        <!-- /.content -->
+    </div>
+</body>
+</html>
+
+
+
+
+

@@ -1,0 +1,33 @@
+﻿@model EntityLayer.Concrete.Category
+
+
+@{
+    ViewBag.Title = "CategoryEdit";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<form class="form-group" method="post">
+
+
+    @Html.Label("ID")
+    @Html.TextBoxFor(x => x.CategoryID, new { @class = "form-control", @readonly="readonly"})
+    <br />
+    <br />
+
+
+    @Html.Label("Kategori Adı")
+    @Html.TextBoxFor(x => x.CategoryName, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.CategoryName)
+    <br />
+    <br />
+
+    @Html.Label("Kategori Açıklaması")
+    @Html.TextBoxFor(x => x.CategoryDescription, new { @class = "form-control", @placeholder = "En az 20 karakter giriniz" })
+    @Html.ValidationMessageFor(x => x.CategoryDescription)
+    <br />
+    <br />
+
+    <button class="btn btn-info">Güncelle</button>
+
+</form>
+

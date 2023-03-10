@@ -1,0 +1,94 @@
+﻿@model IEnumerable<EntityLayer.Concrete.Author>
+
+<h3> <strong> Profilimi Düzenle</strong></h3>
+
+<div class="tab-pane" id="settings">
+    
+    @using (Html.BeginForm("UpdateUserProfile", "User", FormMethod.Post))
+    {
+        foreach (var item in Model)
+        {
+            <form class="form-horizontal">
+                <div class="form-group row">
+                    @*<label for="inputName" class="col-sm-2 col-form-label">Ad Soyad</label>*@
+                    <div class="col-sm-10">
+                        <input type="hidden" class="form-control" name="AuthorID" id="inputName" value="@item.AuthorID">
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="inputName" class="col-sm-2 col-form-label">Ad Soyad</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" name="AuthorName" id="inputName" value="@item.AuthorName">
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="inputName2" class="col-sm-2 col-form-label">Meslek</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" name="AuthorTitle" id="inputTitle" value="@item.AuthorTitle">
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="inputSkills" class="col-sm-2 col-form-label">Yetenekler</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" name="AboutShort" id="inputAbout" value="@item.AboutShort">
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="inputSkills" class="col-sm-2 col-form-label">Fotoğraf</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" name="AuthorImage" id="inputImage" value="@item.AuthorImage">
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="inputSkills" class="col-sm-2 col-form-label">Telefon</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" name="AuthorPhoneNumber" id="inputPhoneNumber" value="@item.AuthorPhoneNumber">
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="inputEmail" class="col-sm-2 col-form-label">Email</label>
+                    <div class="col-sm-10">
+                        <input type="email" class="form-control" name="AuthorMail" id="inputEmail" value="@item.AuthorMail">
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="inputSkills" class="col-sm-2 col-form-label">Şifre</label>
+                    <div class="col-sm-10">
+                        <input type="password" class="form-control" name="AuthorPassword" id="inputPassword" value="@item.AuthorPassword">
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="inputSkills" class="col-sm-2 col-form-label">Hakkımda</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" name="AuthorAbout" id="inputMyAbout" value="@item.AuthorAbout" />
+                    </div>
+                </div>
+
+
+                <div class="form-group row">
+                    <div class="offset-sm-2 col-sm-10">
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox"> Şifremi değiştirmeyi onaylıyorum
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="offset-sm-2 col-sm-10">
+                        <button type="submit" class="btn btn-success">Bilgilerimi Güncelle</button>
+                    </div>
+                </div>
+            </form>
+        }
+    }
+</div>

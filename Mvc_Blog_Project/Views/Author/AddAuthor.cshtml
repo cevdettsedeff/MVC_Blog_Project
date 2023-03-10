@@ -1,0 +1,69 @@
+﻿@model EntityLayer.Concrete.Author
+
+@{
+    ViewBag.Title = "AddAuthor";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>AddAuthor</h2>
+
+<form class="form-group" method="post">
+
+    @Html.Label("ID")
+    @Html.TextBoxFor(x => x.AuthorID, new { @class = "form-control", @readonly = "readonly", @placeholder = "ID otomatik olarak oluşturulacaktır" })
+    <br />
+    <br />
+
+
+    @Html.Label("Yazarın Adı Soyadı")
+    @Html.TextBoxFor(x => x.AuthorName, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.AuthorName)
+    <br />
+    <br />
+
+    @Html.Label("Yazarın Fotoğrafı")
+    @Html.TextBoxFor(x => x.AuthorImage, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.AuthorImage)
+    <br />
+    <br />
+
+    @Html.Label("Yazarın Yetenekleri")
+    @Html.TextBoxFor(x => x.AboutShort, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.AboutShort)
+
+    <br />
+    <br />
+
+    @Html.Label("Yazarın Mesleği")
+    @Html.TextBoxFor(x => x.AuthorTitle, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.AuthorTitle)
+    <br />
+    <br />
+
+    @Html.Label("Yazarın Maili")
+    @Html.TextBoxFor(x => x.AuthorMail, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.AuthorMail)
+    <br />
+    <br />
+
+    @Html.Label("Yazarın Şifresi")
+    @Html.TextBoxFor(x => x.AuthorPassword, new { @class = "form-control", @placeholder = "Şifre giriniz" })
+    @Html.ValidationMessageFor(x => x.AuthorPassword)
+    <br />
+    <br />
+
+    @Html.Label("Yazarın Telefonu")
+    @Html.TextBoxFor(x => x.AuthorPhoneNumber, new { @class = "form-control", @placeholder = "(xxx) xxx xxxx formatında giriniz" })
+    @Html.ValidationMessageFor(x => x.AuthorPhoneNumber)
+    <br />
+    <br />
+
+    @Html.Label("Yazar Hakkında")
+    @Html.TextBoxFor(x => x.AuthorAbout, new { @class = "form-control", @placeholder = "" })
+    @Html.ValidationMessageFor(x => x.AuthorAbout)
+    <br />
+    <br />
+
+    <button class="btn btn-info">Kaydet</button>
+
+</form>

@@ -1,0 +1,77 @@
+﻿@model IEnumerable<EntityLayer.Concrete.Admin>
+
+@{
+    ViewBag.Title = "AdminList";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+
+<!DOCTYPE html>
+
+<html>
+
+<body class="hold-transition sidebar-mini">
+    <!-- Site wrapper -->
+    <div class="wrapper">
+        <!-- Main content -->
+        <section class="content">
+
+            <div class="card card-solid">
+                <div class="card-body pb-0">
+                    <div class="row d-flex align-items-stretch">
+                        @foreach (var item in Model)
+                        {
+
+
+                            <div class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch">
+                                <div class="card bg-light col-12 col-sm-6 col-md-12 d-flex align-items-stretch">
+                                    <div class="card-header text-muted border-bottom-0">
+                                        Yönetici - @item.AdminID
+                                    </div>
+
+                                    <div class="card-body pt-0">
+                                        <div class="row">
+                                            <div class="col-7">
+                                                <h2 class="lead"><b>@item.AdminName</b></h2>
+
+                                                <ul class="ml-4 mb-0 fa-ul text-muted">
+                                                    <li class="small"><span class="fa-li"><i class="fas fa-lg fa-building"></i></span> Mail: @item.UserName</li>
+                                                    <br />
+                                                    <li class="small"><span class="fa-li"><i class="fas fa-lg fa-phone"></i></span> Telefon: +90 @item.AdminPhoneNumber</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card-footer bg-light">
+                                        <div class="text-left">
+
+                                            @if (User.IsInRole("A"))
+                                            {
+                                                <a href="/Admin/AdminEdit/@item.AdminID" class="btn btn-sm btn-primary">
+                                                    <i class="fas fa-user"></i> Profili düzenle
+                                                </a>
+
+
+
+                                                <a href="/Admin/DeleteAdmin/@item.AdminID" class="btn btn-sm btn-danger">
+                                                    <i class="fas fa-trash"></i> Profili Sil
+                                                </a>
+                                            }
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- /.content -->
+    </div>
+</body>
+</html>
+<a href="/Admin/AdminAdd" class="btn btn-primary">Yeni Admin Ekle</a>
+
+

@@ -1,0 +1,76 @@
+﻿@model IEnumerable<EntityLayer.Concrete.Author>
+
+@{
+    ViewBag.Title = "AuthorList";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <style>
+        img#yazar_resim {
+            border-radius: 50%;
+            height: 150px;
+            width: 150px;
+            object-fit: cover;
+            box-shadow: 12px 12px 16px 0 rgba(0, 0, 0, 0.25), -8px -8px 12px 0 rgba(255, 255, 255, 0.3);
+        }
+    </style>
+</head>
+<body class="hold-transition sidebar-mini">
+    <!-- Site wrapper -->
+    <div class="wrapper">
+        <!-- Main content -->
+        <section class="content">
+           
+                <div class="card card-solid">
+                    <div class="card-body pb-0">
+                        <div class="row d-flex align-items-stretch">
+                            @foreach (var item in Model)
+                            {
+                                <div class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch">
+                                    <div class="card bg-light col-12 col-sm-6 col-md-12 d-flex align-items-stretch">
+                                        <div class="card-header text-muted border-bottom-0">
+                                            @item.AuthorTitle
+                                        </div>
+
+                                        <div class="card-body pt-0">
+                                            <div class="row">
+                                                <div class="col-7">
+                                                    <h2 class="lead"><b>@item.AuthorName</b></h2>
+                                                    <p class="text-muted text-sm"><b>About: </b>@item.AboutShort</p>
+                                                    <ul class="ml-4 mb-0 fa-ul text-muted">
+                                                        <li class="small"><span class="fa-li"><i class="fas fa-lg fa-building"></i></span> Mail: @item.AuthorMail</li><br />
+                                                        <li class="small"><span class="fa-li"><i class="fas fa-lg fa-phone"></i></span> Telefon: +90 @item.AuthorPhoneNumber</li>
+                                                    </ul>
+                                                </div>
+                                                <div class="col-5 text-center">
+                                                    <img id="yazar_resim" src="@item.AuthorImage" alt="" class="img-circle img-fluid">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card-footer bg-light">
+                                            <div class="text-left">
+                                                <a href="/Blog/AuthorBlogList/@item.AuthorID" class="btn btn-sm bg-teal">
+                                                    <i class="fas fa-comments"></i> Yazarın blogları
+                                                </a>
+                                                <a href="/Author/AuthorEdit/@item.AuthorID" class="btn btn-sm btn-primary">
+                                                    <i class="fas fa-user"></i> Profili düzenle
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                            </div>
+                    </div>
+                </div>
+            </section>
+        <!-- /.content -->
+    </div>
+</body>
+</html>
+<a href="/Author/AddAuthor" class="btn btn-primary">Yeni Yazar Ekle</a>

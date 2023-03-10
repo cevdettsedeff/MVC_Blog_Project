@@ -1,0 +1,47 @@
+﻿@model IEnumerable<EntityLayer.Concrete.Category>
+
+@{ string color = "";}
+    <div class="sidebar-box">
+
+        <h3 class="heading">Kategoriler</h3>
+
+        <ul class="categories">
+            @foreach (var item in Model)
+            {
+                if (item.CategoryName == "Yazılım")
+                {
+                    color = "primary";
+                }
+
+                if (item.CategoryName == "Teknoloji")
+                {
+                    color = "info";
+                }
+
+                if (item.CategoryName == "Film & Dizi")
+                {
+                    color = "secondary";
+                }
+
+                if (item.CategoryName == "Seyahat")
+                {
+                    color = "success";
+                }
+
+                if (item.CategoryName == "Mekanik")
+                {
+                    color = "warning";
+                }
+
+                if (item.CategoryName == "Spor")
+                {
+                    color = "danger";
+                }
+
+                <li>
+
+                    <a class="badge badge-@color d-inline" style="color:black;" href="/Blog/BlogByCategory/@item.CategoryID">@item.CategoryName</a>
+                </li>
+            }
+        </ul>
+    </div>

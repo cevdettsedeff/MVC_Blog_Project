@@ -1,0 +1,62 @@
+﻿@model IEnumerable<EntityLayer.Concrete.Blog>
+
+@{string color = "";}
+
+
+<head>
+    <style>
+        img#avatarss {
+            border-radius: 50%;
+            height: 40px;
+            width: 40px;
+            object-fit: cover;
+        }
+    </style>
+</head>
+@foreach (var item in Model)
+{
+
+
+    if (item.Category.CategoryName == "Yazılım")
+    {
+        color = "post-category text-white bg-secondary mb-3";
+    }
+
+    if (item.Category.CategoryName == "Teknoloji")
+    {
+        color = "post-category text-white bg-info mb-3";
+    }
+
+    if (item.Category.CategoryName == "Film & Dizi")
+    {
+        color = "post-category text-white bg-primary mb-3";
+    }
+
+    if (item.Category.CategoryName == "Seyahat")
+    {
+        color = "post-category text-white bg-success mb-3";
+    }
+
+    if (item.Category.CategoryName == "Mekanik")
+    {
+        color = "post-category text-white bg-warning mb-3";
+    }
+
+        <div class="site-cover site-cover-sm same-height overlay single-page" style="background-image: url('@item.BlogImage');">
+            <div class="container">
+                <div class="row same-height justify-content-center">
+                    <div class="col-md-12 col-lg-10">
+                        <div class="post-entry text-center">
+                            <span class="@color">@item.Category.CategoryName</span>
+                            <h1 class="mb-4">@item.BlogTitle</h1>
+                            <div class="post-meta align-items-center text-center">
+                                <img src="@item.Author.AuthorImage" id="avatarss" />
+                            <span class="d-inline-block mt-1">&nbsp;@item.Author.AuthorName</span>
+                                <span>&nbsp;-&nbsp; @(((DateTime)item.BlogDate).ToString("dd-MMM-yyyy"))</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
